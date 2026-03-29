@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, CheckCircle, ChevronDown } from "lucide-react";
 import { projects, Challenge } from "@/data/portfolio";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import projectCover1 from "@/assets/project-cover-1.jpg";
 import projectCover2 from "@/assets/project-cover-2.jpg";
 import projectCover3 from "@/assets/project-cover-3.jpg";
@@ -118,6 +118,10 @@ const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const project = projects.find((p) => p.id === id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!project) {
     return (
