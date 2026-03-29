@@ -1,0 +1,322 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" viewBox="0 0 1200 1310" style="background:#FFFFFF; font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;">
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arr-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arr-coral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#993C1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- HEADER -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <rect x="0" y="0" width="1200" height="72" fill="#2C2C2A"/>
+  <text x="36" y="30" font-size="20" font-weight="600" fill="#FFFFFF" letter-spacing="0.3">Retail Data Warehouse — ETL Architecture</text>
+  <text x="36" y="54" font-size="13" fill="#B4B2A9">Kimball Dimensional Modeling · Informatica PowerCenter · SQL Server → Oracle</text>
+  <text x="1164" y="30" font-size="12" fill="#888780" text-anchor="end">Source</text>
+  <text x="1164" y="48" font-size="12" fill="#5DCAA5" text-anchor="end">Staging</text>
+  <text x="1164" y="66" font-size="12" fill="#7F77DD" text-anchor="end">Dimensions · Fact · Audit · Recovery</text>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: SOURCE -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <!-- Section band -->
+  <rect x="0" y="72" width="72" height="112" fill="#F1EFE8"/>
+  <text x="36" y="136" font-size="11" font-weight="600" fill="#5F5E5A" text-anchor="middle" transform="rotate(-90 36 136)">SOURCE</text>
+  <line x1="72" y1="72" x2="72" y2="184" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- Section container -->
+  <rect x="80" y="82" width="1108" height="92" rx="8" fill="none" stroke="#D3D1C7" stroke-width="0.5" stroke-dasharray="5 3"/>
+  <text x="96" y="99" font-size="11" font-weight="600" fill="#888780">SQL Server — Northwind (11 tables)</text>
+
+  <!-- 5 source boxes: width=196, gap=16, start x=88 -->
+  <!-- Box 1 -->
+  <rect x="88" y="106" width="196" height="58" rx="6" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="186" y="131" font-size="13" font-weight="600" fill="#444441" text-anchor="middle">Orders</text>
+  <text x="186" y="150" font-size="11" fill="#5F5E5A" text-anchor="middle">+ OrderDetails</text>
+  <!-- Box 2 -->
+  <rect x="300" y="106" width="196" height="58" rx="6" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="398" y="131" font-size="13" font-weight="600" fill="#444441" text-anchor="middle">Customers</text>
+  <text x="398" y="150" font-size="11" fill="#5F5E5A" text-anchor="middle">Products · Categories</text>
+  <!-- Box 3 -->
+  <rect x="512" y="106" width="196" height="58" rx="6" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="610" y="131" font-size="13" font-weight="600" fill="#444441" text-anchor="middle">Employees</text>
+  <text x="610" y="150" font-size="11" fill="#5F5E5A" text-anchor="middle">Territories · Regions</text>
+  <!-- Box 4 -->
+  <rect x="724" y="106" width="196" height="58" rx="6" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="822" y="131" font-size="13" font-weight="600" fill="#444441" text-anchor="middle">Shippers</text>
+  <text x="822" y="150" font-size="11" fill="#5F5E5A" text-anchor="middle">Suppliers</text>
+  <!-- Box 5 -->
+  <rect x="936" y="106" width="196" height="58" rx="6" fill="#F1EFE8" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="1034" y="131" font-size="13" font-weight="600" fill="#444441" text-anchor="middle">EmployeeTerritories</text>
+  <text x="1034" y="150" font-size="11" fill="#5F5E5A" text-anchor="middle">Bridge source</text>
+
+  <!-- Arrows source → staging -->
+  <line x1="186" y1="164" x2="186" y2="212" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="398" y1="164" x2="398" y2="212" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="610" y1="164" x2="610" y2="212" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="822" y1="164" x2="822" y2="212" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="1034" y1="164" x2="1034" y2="212" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: STAGING -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <rect x="0" y="184" width="72" height="196" fill="#E1F5EE"/>
+  <text x="36" y="282" font-size="11" font-weight="600" fill="#0F6E56" text-anchor="middle" transform="rotate(-90 36 282)">STAGING</text>
+  <line x1="72" y1="184" x2="72" y2="380" stroke="#9FE1CB" stroke-width="0.5"/>
+
+  <rect x="80" y="192" width="1108" height="180" rx="8" fill="none" stroke="#9FE1CB" stroke-width="0.5" stroke-dasharray="5 3"/>
+  <text x="96" y="209" font-size="11" font-weight="600" fill="#0F6E56">Informatica PowerCenter — Staging Layer (as-is extract + load_date)</text>
+
+  <!-- Row 1: 4 boxes width=248 gap=16 start=88 -->
+  <rect x="88" y="216" width="252" height="62" rx="6" fill="#E1F5EE" stroke="#1D9E75" stroke-width="0.5"/>
+  <text x="214" y="241" font-size="13" font-weight="600" fill="#085041" text-anchor="middle">stg_orders / stg_orderdetails</text>
+  <text x="214" y="259" font-size="11" fill="#0F6E56" text-anchor="middle">Incremental — watermark via last_success_run</text>
+
+  <rect x="356" y="216" width="252" height="62" rx="6" fill="#E1F5EE" stroke="#1D9E75" stroke-width="0.5"/>
+  <text x="482" y="241" font-size="13" font-weight="600" fill="#085041" text-anchor="middle">stg_customers / stg_products</text>
+  <text x="482" y="259" font-size="11" fill="#0F6E56" text-anchor="middle">Full snapshot overwrite</text>
+
+  <rect x="624" y="216" width="252" height="62" rx="6" fill="#E1F5EE" stroke="#1D9E75" stroke-width="0.5"/>
+  <text x="750" y="241" font-size="13" font-weight="600" fill="#085041" text-anchor="middle">stg_employees / stg_territories</text>
+  <text x="750" y="259" font-size="11" fill="#0F6E56" text-anchor="middle">Full snapshot overwrite</text>
+
+  <rect x="892" y="216" width="252" height="62" rx="6" fill="#E1F5EE" stroke="#1D9E75" stroke-width="0.5"/>
+  <text x="1018" y="241" font-size="13" font-weight="600" fill="#085041" text-anchor="middle">stg_shippers / stg_suppliers</text>
+  <text x="1018" y="259" font-size="11" fill="#0F6E56" text-anchor="middle">Full snapshot overwrite</text>
+
+  <!-- Row 2: note box -->
+  <rect x="88" y="292" width="1056" height="50" rx="6" fill="#9FE1CB" stroke="#1D9E75" stroke-width="0.5"/>
+  <text x="616" y="313" font-size="13" font-weight="600" fill="#04342C" text-anchor="middle">All staging tables include: load_date (audit watermark) · Categories, Suppliers flattened at staging level</text>
+  <text x="616" y="331" font-size="11" fill="#085041" text-anchor="middle">stg_employeeterritories loaded separately — direct source for bridge_employee_territory weighting calculation</text>
+
+  <!-- Arrows staging → dimensions -->
+  <line x1="300" y1="380" x2="300" y2="428" stroke="#0F6E56" stroke-width="1" marker-end="url(#arr-teal)"/>
+  <line x1="616" y1="380" x2="616" y2="428" stroke="#0F6E56" stroke-width="1" marker-end="url(#arr-teal)"/>
+  <line x1="930" y1="380" x2="930" y2="428" stroke="#0F6E56" stroke-width="1" marker-end="url(#arr-teal)"/>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: DIMENSIONS -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <rect x="0" y="380" width="72" height="310" fill="#EEEDFE"/>
+  <text x="36" y="535" font-size="11" font-weight="600" fill="#534AB7" text-anchor="middle" transform="rotate(-90 36 535)">DIMENSIONS</text>
+  <line x1="72" y1="380" x2="72" y2="690" stroke="#AFA9EC" stroke-width="0.5"/>
+
+  <rect x="80" y="388" width="1108" height="294" rx="8" fill="none" stroke="#AFA9EC" stroke-width="0.5" stroke-dasharray="5 3"/>
+  <text x="96" y="405" font-size="11" font-weight="600" fill="#534AB7">Oracle DWH — Dimensions</text>
+
+  <!-- Row 1: 3 boxes width=340 gap=20 start=88 -->
+  <rect x="88" y="412" width="340" height="72" rx="6" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.5"/>
+  <text x="258" y="436" font-size="13" font-weight="600" fill="#3C3489" text-anchor="middle">dim_date</text>
+  <text x="258" y="455" font-size="11" fill="#534AB7" text-anchor="middle">Built at DB level — Oracle CONNECT BY LEVEL</text>
+  <text x="258" y="473" font-size="11" fill="#534AB7" text-anchor="middle">3 role-playing views: order · ship · required date</text>
+
+  <rect x="448" y="412" width="340" height="72" rx="6" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.5"/>
+  <text x="618" y="436" font-size="13" font-weight="600" fill="#3C3489" text-anchor="middle">dim_product</text>
+  <text x="618" y="455" font-size="11" fill="#534AB7" text-anchor="middle">SCD Type 2 — category_name, supplier_name, unit_price</text>
+  <text x="618" y="473" font-size="11" fill="#534AB7" text-anchor="middle">Flattened: product + category + supplier</text>
+
+  <rect x="808" y="412" width="340" height="72" rx="6" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.5"/>
+  <text x="978" y="436" font-size="13" font-weight="600" fill="#3C3489" text-anchor="middle">dim_customer</text>
+  <text x="978" y="455" font-size="11" fill="#534AB7" text-anchor="middle">SCD Type 2 — city, country, company_name</text>
+  <text x="978" y="473" font-size="11" fill="#534AB7" text-anchor="middle">Type 1: contact_name, phone</text>
+
+  <!-- Row 2: 3 boxes -->
+  <rect x="88" y="500" width="340" height="72" rx="6" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.5"/>
+  <text x="258" y="524" font-size="13" font-weight="600" fill="#3C3489" text-anchor="middle">dim_employee</text>
+  <text x="258" y="543" font-size="11" fill="#534AB7" text-anchor="middle">SCD Type 2 — title, department</text>
+  <text x="258" y="561" font-size="11" fill="#534AB7" text-anchor="middle">Type 1: phone, address</text>
+
+  <rect x="448" y="500" width="340" height="72" rx="6" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.5"/>
+  <text x="618" y="524" font-size="13" font-weight="600" fill="#3C3489" text-anchor="middle">dim_shipper</text>
+  <text x="618" y="543" font-size="11" fill="#534AB7" text-anchor="middle">SCD Type 1 — insert / update in place</text>
+  <text x="618" y="561" font-size="11" fill="#534AB7" text-anchor="middle">No history tracking required</text>
+
+  <rect x="808" y="500" width="340" height="72" rx="6" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.5"/>
+  <text x="978" y="524" font-size="13" font-weight="600" fill="#3C3489" text-anchor="middle">dim_shipping_address</text>
+  <text x="978" y="543" font-size="11" fill="#534AB7" text-anchor="middle">SCD Type 1 — insert-only</text>
+  <text x="978" y="561" font-size="11" fill="#534AB7" text-anchor="middle">MD5(normalized fields) as surrogate key</text>
+
+  <!-- Row 3: SK box + bridge box -->
+  <rect x="88" y="588" width="510" height="68" rx="6" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+  <text x="343" y="610" font-size="13" font-weight="600" fill="#712B13" text-anchor="middle">Surrogate key generation — all SCD2 dims</text>
+  <text x="343" y="629" font-size="11" fill="#993C1D" text-anchor="middle">Target dim imported as source · SQL override: CROSS JOIN (SELECT MAX(sk))</text>
+  <text x="343" y="647" font-size="11" fill="#993C1D" text-anchor="middle">Expression: max_sk + v_counter · Self-healing, zero external deps</text>
+
+  <rect x="614" y="588" width="534" height="68" rx="6" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+  <text x="881" y="610" font-size="13" font-weight="600" fill="#712B13" text-anchor="middle">bridge_employee_territory</text>
+  <text x="881" y="629" font-size="11" fill="#993C1D" text-anchor="middle">SCD Type 1 — TRUNCATE + full reload each run</text>
+  <text x="881" y="647" font-size="11" fill="#993C1D" text-anchor="middle">weighting_factor = 1/COUNT via SQL subquery · PK: (employee_key, territory_key)</text>
+
+  <!-- Arrows dimensions → fact -->
+  <line x1="300" y1="690" x2="300" y2="734" stroke="#534AB7" stroke-width="1" marker-end="url(#arr-purple)"/>
+  <line x1="616" y1="690" x2="616" y2="734" stroke="#534AB7" stroke-width="1" marker-end="url(#arr-purple)"/>
+  <line x1="930" y1="690" x2="930" y2="734" stroke="#534AB7" stroke-width="1" marker-end="url(#arr-purple)"/>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: FACT TABLE -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <rect x="0" y="690" width="72" height="148" fill="#E6F1FB"/>
+  <text x="36" y="764" font-size="11" font-weight="600" fill="#185FA5" text-anchor="middle" transform="rotate(-90 36 764)">FACT</text>
+  <line x1="72" y1="690" x2="72" y2="838" stroke="#85B7EB" stroke-width="0.5"/>
+
+  <rect x="80" y="698" width="1108" height="132" rx="8" fill="none" stroke="#85B7EB" stroke-width="0.5" stroke-dasharray="5 3"/>
+  <text x="96" y="715" font-size="11" font-weight="600" fill="#185FA5">Oracle DWH — Fact table</text>
+
+  <!-- Fact box 1: keys -->
+  <rect x="88" y="722" width="520" height="96" rx="6" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+  <text x="348" y="746" font-size="13" font-weight="600" fill="#0C447C" text-anchor="middle">fact_sales — grain: one row per order line</text>
+  <text x="348" y="765" font-size="11" fill="#185FA5" text-anchor="middle">FKs: order_date_key · ship_date_key · required_date_key (role-playing)</text>
+  <text x="348" y="783" font-size="11" fill="#185FA5" text-anchor="middle">product_key · customer_key · employee_key · shipper_key · shipping_address_key</text>
+  <text x="348" y="801" font-size="11" fill="#185FA5" text-anchor="middle">Degenerate dim: order_id · load_date (rollback anchor)</text>
+
+  <!-- Fact box 2: measures -->
+  <rect x="624" y="722" width="524" height="96" rx="6" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+  <text x="886" y="746" font-size="13" font-weight="600" fill="#0C447C" text-anchor="middle">Measures — base + derived facts</text>
+  <text x="886" y="765" font-size="11" fill="#185FA5" text-anchor="middle">Base: unit_price · quantity · discount</text>
+  <text x="886" y="783" font-size="11" fill="#185FA5" text-anchor="middle">gross_amount = unit_price × qty</text>
+  <text x="886" y="801" font-size="11" fill="#185FA5" text-anchor="middle">discount_amount = gross × discount · extended_amount = gross × (1 − discount)</text>
+
+  <!-- Arrows fact → audit -->
+  <line x1="616" y1="838" x2="616" y2="882" stroke="#185FA5" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: AUDIT -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <rect x="0" y="838" width="72" height="184" fill="#FAEEDA"/>
+  <text x="36" y="930" font-size="11" font-weight="600" fill="#854F0B" text-anchor="middle" transform="rotate(-90 36 930)">AUDIT</text>
+  <line x1="72" y1="838" x2="72" y2="1022" stroke="#FAC775" stroke-width="0.5"/>
+
+  <rect x="80" y="846" width="1108" height="168" rx="8" fill="none" stroke="#FAC775" stroke-width="0.5" stroke-dasharray="5 3"/>
+  <text x="96" y="863" font-size="11" font-weight="600" fill="#854F0B">ETL Auditing — per mapping, driven by batch files via pre/post session commands</text>
+
+  <!-- Audit box 1: pre-session -->
+  <rect x="88" y="870" width="316" height="80" rx="6" fill="#FAEEDA" stroke="#EF9F27" stroke-width="0.5"/>
+  <text x="246" y="893" font-size="13" font-weight="600" fill="#633806" text-anchor="middle">Pre-session command</text>
+  <text x="246" y="912" font-size="11" fill="#854F0B" text-anchor="middle">MERGE etl_audit</text>
+  <text x="246" y="930" font-size="11" fill="#854F0B" text-anchor="middle">Insert if new · Reset to STARTED if exists</text>
+  <text x="246" y="942" font-size="11" fill="#854F0B" text-anchor="middle">start_date = SYSDATE</text>
+
+  <!-- arrow pre → table -->
+  <line x1="404" y1="910" x2="438" y2="910" stroke="#BA7517" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- Audit box 2: table -->
+  <rect x="440" y="870" width="316" height="80" rx="6" fill="#FAEEDA" stroke="#EF9F27" stroke-width="0.5"/>
+  <text x="598" y="893" font-size="13" font-weight="600" fill="#633806" text-anchor="middle">etl_audit table</text>
+  <text x="598" y="912" font-size="11" fill="#854F0B" text-anchor="middle">map_name · status · start_date · end_date</text>
+  <text x="598" y="930" font-size="11" fill="#854F0B" text-anchor="middle">last_success_run · source_rows · target_rows</text>
+  <text x="598" y="942" font-size="11" fill="#854F0B" text-anchor="middle">status: STARTED → SUCCEEDED / FAILED</text>
+
+  <!-- arrow table → post -->
+  <line x1="756" y1="910" x2="790" y2="910" stroke="#BA7517" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- Audit box 3: post-session -->
+  <rect x="792" y="870" width="316" height="80" rx="6" fill="#FAEEDA" stroke="#EF9F27" stroke-width="0.5"/>
+  <text x="950" y="893" font-size="13" font-weight="600" fill="#633806" text-anchor="middle">Post-session command</text>
+  <text x="950" y="912" font-size="11" fill="#854F0B" text-anchor="middle">UPDATE etl_audit: status, end_date, row counts</text>
+  <text x="950" y="930" font-size="11" fill="#854F0B" text-anchor="middle">last_success_run updated ONLY on SUCCEEDED</text>
+  <text x="950" y="942" font-size="11" fill="#854F0B" text-anchor="middle">Drives incremental watermark for next run</text>
+
+  <!-- Audit note bar -->
+  <rect x="88" y="964" width="1056" height="36" rx="6" fill="#FAC775" stroke="#EF9F27" stroke-width="0.5"/>
+  <text x="616" y="978" font-size="12" font-weight="600" fill="#412402" text-anchor="middle">All implemented via Windows batch files (.bat) called from PowerCenter pre/post session command fields</text>
+  <text x="616" y="993" font-size="11" fill="#633806" text-anchor="middle">SQLPLUS invoked per session · no external scheduler required</text>
+
+  <!-- Arrow audit → recovery -->
+  <line x1="616" y1="1022" x2="616" y2="1060" stroke="#BA7517" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- SECTION: RECOVERY -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <rect x="0" y="1022" width="72" height="250" fill="#FAECE7"/>
+  <text x="36" y="1147" font-size="11" font-weight="600" fill="#993C1D" text-anchor="middle" transform="rotate(-90 36 1147)">RECOVERY</text>
+  <line x1="72" y1="1022" x2="72" y2="1272" stroke="#F5C4B3" stroke-width="0.5"/>
+
+  <rect x="80" y="1030" width="1108" height="234" rx="8" fill="none" stroke="#F5C4B3" stroke-width="0.5" stroke-dasharray="5 3"/>
+  <text x="96" y="1047" font-size="11" font-weight="600" fill="#993C1D">Recovery &amp; Rollback — $$AsOfDate parameter file</text>
+
+  <!-- Step 1: trigger -->
+  <rect x="88" y="1054" width="236" height="72" rx="6" fill="#FAECE7" stroke="#D85A30" stroke-width="0.5"/>
+  <text x="206" y="1077" font-size="13" font-weight="600" fill="#712B13" text-anchor="middle">Failure detected</text>
+  <text x="206" y="1096" font-size="11" fill="#993C1D" text-anchor="middle">Set $$AsOfDate in</text>
+  <text x="206" y="1114" font-size="11" fill="#993C1D" text-anchor="middle">parameter file</text>
+
+  <line x1="324" y1="1090" x2="356" y2="1090" stroke="#993C1D" stroke-width="1" marker-end="url(#arr-coral)"/>
+
+  <!-- Step 2: SCD2 rollback -->
+  <rect x="358" y="1054" width="280" height="72" rx="6" fill="#FAECE7" stroke="#D85A30" stroke-width="0.5"/>
+  <text x="498" y="1074" font-size="13" font-weight="600" fill="#712B13" text-anchor="middle">SCD2 dim rollback</text>
+  <text x="498" y="1092" font-size="11" fill="#993C1D" text-anchor="middle">1. Reopen expired rows</text>
+  <text x="498" y="1108" font-size="11" fill="#993C1D" text-anchor="middle">(end_date = $$AsOfDate → 9999-12-31)</text>
+  <text x="498" y="1122" font-size="11" fill="#993C1D" text-anchor="middle">2. Delete new rows (effective_date = $$AsOfDate)</text>
+
+  <line x1="638" y1="1090" x2="668" y2="1090" stroke="#993C1D" stroke-width="1" marker-end="url(#arr-coral)"/>
+
+  <!-- Step 3: fact rollback -->
+  <rect x="670" y="1054" width="260" height="72" rx="6" fill="#FAECE7" stroke="#D85A30" stroke-width="0.5"/>
+  <text x="800" y="1077" font-size="13" font-weight="600" fill="#712B13" text-anchor="middle">Fact rollback</text>
+  <text x="800" y="1096" font-size="11" fill="#993C1D" text-anchor="middle">DELETE fact_sales</text>
+  <text x="800" y="1114" font-size="11" fill="#993C1D" text-anchor="middle">WHERE load_date = $$AsOfDate</text>
+
+  <line x1="930" y1="1090" x2="960" y2="1090" stroke="#993C1D" stroke-width="1" marker-end="url(#arr-coral)"/>
+
+  <!-- Step 4: audit update -->
+  <rect x="962" y="1054" width="210" height="72" rx="6" fill="#FAECE7" stroke="#D85A30" stroke-width="0.5"/>
+  <text x="1067" y="1077" font-size="13" font-weight="600" fill="#712B13" text-anchor="middle">Audit updated</text>
+  <text x="1067" y="1096" font-size="11" fill="#993C1D" text-anchor="middle">etl_audit status</text>
+  <text x="1067" y="1114" font-size="11" fill="#993C1D" text-anchor="middle">→ ROLLED_BACK</text>
+
+  <!-- Command task note -->
+  <rect x="88" y="1144" width="512" height="48" rx="6" fill="#F5C4B3" stroke="#D85A30" stroke-width="0.5"/>
+  <text x="344" y="1163" font-size="12" font-weight="600" fill="#4A1B0C" text-anchor="middle">Cleanup via Command Task (not pre-session SQL)</text>
+  <text x="344" y="1181" font-size="11" fill="#712B13" text-anchor="middle">Runs outside session context — prevents TM_6273 session lock</text>
+
+  <!-- SCD1 idempotent note -->
+  <rect x="616" y="1144" width="528" height="48" rx="6" fill="#F5C4B3" stroke="#D85A30" stroke-width="0.5"/>
+  <text x="880" y="1163" font-size="12" font-weight="600" fill="#4A1B0C" text-anchor="middle">SCD Type 1 dims are idempotent</text>
+  <text x="880" y="1181" font-size="11" fill="#712B13" text-anchor="middle">Shipper · shipping_address · bridge — rerun overwrites in place, no rollback needed</text>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- LEGEND -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+
+  <rect x="0" y="1272" width="1200" height="38" fill="#F1EFE8"/>
+  <line x1="0" y1="1272" x2="1200" y2="1272" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <text x="36" y="1296" font-size="11" font-weight="600" fill="#5F5E5A">Legend:</text>
+
+  <rect x="90" y="1284" width="12" height="12" rx="2" fill="#F1EFE8" stroke="#888780" stroke-width="0.5"/>
+  <text x="108" y="1295" font-size="11" fill="#5F5E5A">Source</text>
+
+  <rect x="170" y="1284" width="12" height="12" rx="2" fill="#E1F5EE" stroke="#1D9E75" stroke-width="0.5"/>
+  <text x="188" y="1295" font-size="11" fill="#5F5E5A">Staging</text>
+
+  <rect x="254" y="1284" width="12" height="12" rx="2" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.5"/>
+  <text x="272" y="1295" font-size="11" fill="#5F5E5A">Dimensions</text>
+
+  <rect x="360" y="1284" width="12" height="12" rx="2" fill="#E6F1FB" stroke="#378ADD" stroke-width="0.5"/>
+  <text x="378" y="1295" font-size="11" fill="#5F5E5A">Fact table</text>
+
+  <rect x="454" y="1284" width="12" height="12" rx="2" fill="#FAEEDA" stroke="#EF9F27" stroke-width="0.5"/>
+  <text x="472" y="1295" font-size="11" fill="#5F5E5A">ETL Audit</text>
+
+  <rect x="550" y="1284" width="12" height="12" rx="2" fill="#FAECE7" stroke="#D85A30" stroke-width="0.5"/>
+  <text x="568" y="1295" font-size="11" fill="#5F5E5A">Recovery / Rollback</text>
+
+  <text x="1164" y="1296" font-size="11" fill="#888780" text-anchor="end">Ezz Khalil · Retail DWH Portfolio Project</text>
+
+</svg>
