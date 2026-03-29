@@ -2,11 +2,18 @@
 // PORTFOLIO DATA - Edit your info here!
 // ============================================
 
+import profilePhoto from '../assets/IMG-20251224-WA0026.jpg';
+import retailSourceSchema from '../assets/drawSQL-image-export-2026-03-05.jpg.jpeg';
+import retailTargetSchema from '../assets/drawSQLDWH-image-export-2026-03-26.jpg.jpeg';
+import retailPipelineArc from '../assets/retail_dwh_etl_architecture.svg';
+import socialPipelineArc from '../assets/Image Mar 29, 2026, 10_42_07 PM.png';
+import dbtPipelineArc from '../assets/dbt_architecture.svg';
+
 export const personalInfo = {
   name: "Ezz Khalil",
   title: "Data Engineer | Data Integration Engineer",
   brief: "I'm a data-engineering enthusiast with experience in Informatica PowerCenter, Spark, DBT, Databricks, Python, and advanced SQL, building reliable ETL pipelines and dimensional models. Coming from a Scientific Computing background, I focus on scalable data integration and performance-driven design. My goal is to become a strong data engineer contributing to modern data and AI platforms.",
-  photo: "src/assets/IMG-20251224-WA0026.jpg", // Replace with your photo path
+  photo: profilePhoto, // Replace with your photo path
   contacts: {
     email: "ezzkhalil74@gmail.com",
     phone: "+201558877702",
@@ -208,21 +215,21 @@ export const projects: Project[] = [
           sectionTitle: "Operational source schema",
           title: "Northwind — SQL Server",
           subtitle: "11 tables · operational OLTP schema",
-          imagePath: "/src/assets/drawSQL-image-export-2026-03-05.jpg.jpeg",
+          imagePath: retailSourceSchema,
         },
         {
           sectionPretitle: "03 — Dimensional Schema",
           sectionTitle: "Target dim model",
           title: "Target Dimensional Model — Oracle DWH",
           subtitle: "Star schema · 7 dimensions · 3 fact tables",
-          imagePath: "/src/assets/drawSQLDWH-image-export-2026-03-26.jpg.jpeg",
+          imagePath: retailTargetSchema,
         },
         {
           sectionPretitle: "04 — ETL Pipeline",
           sectionTitle: "Pipeline architecture",
           title: "Full ETL Architecture",
           subtitle: "6-layer pipeline · staging → SCD → fact → audit → recovery",
-          imagePath: "/src/assets/retail_dwh_etl_architecture.svg",
+          imagePath: retailPipelineArc,
         },
       ],
       challenges: [
@@ -329,7 +336,7 @@ export const projects: Project[] = [
           sectionTitle: "High-Level Pipeline Overview",
           title: "End-to-End Workflow Diagram",
           subtitle: "API Sources → Raw JSON → Bronze → Silver → Gold → Daily CSVs",
-          imagePath: "/src/assets/Image Mar 29, 2026, 10_42_07 PM.png",
+          imagePath: socialPipelineArc,
         },
       ],
       challenges: [
@@ -427,7 +434,7 @@ export const projects: Project[] = [
           sectionTitle: "Medallion Data Pipeline",
           title: "Architecture Diagram",
           subtitle: "Sources → Bronze (Autoloader) → Silver (dbt) → Gold (Snapshots)",
-          imagePath: "/src/assets/dbt_architecture.svg",
+          imagePath: dbtPipelineArc,
         },
       ],
       challenges: [
