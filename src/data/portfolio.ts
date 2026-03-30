@@ -174,7 +174,7 @@ export const projects: Project[] = [
       steps: [
         "Analyzed 11 source tables in the Northwind SQL Server OLTP schema",
         "Defined grain at order-line level following Kimball Ch. 3",
-        "Designed 7 dimension tables and 3 derived fact tables as a star schema in Oracle",
+        "Designed 7 dimension tables and fact table as a star schema in Oracle",
         "Implemented SCD Type 1 for shipper, shipping address, and bridge dimensions",
         "Implemented SCD Type 2 for customer, employee, product, and supplier dimensions",
         "Built role-playing date dimensions (order date, required date, shipped date) via Oracle views",
@@ -188,7 +188,7 @@ export const projects: Project[] = [
       stats: [
         { value: "11", label: "Source tables" },
         { value: "7", label: "Dimensions" },
-        { value: "3", label: "Derived facts" },
+        { value: "1", label: "Fact Table" },
         { value: "6", label: "Pipeline layers" },
       ],
       overviewCards: [
@@ -221,7 +221,7 @@ export const projects: Project[] = [
           sectionPretitle: "03 — Dimensional Schema",
           sectionTitle: "Target dim model",
           title: "Target Dimensional Model — Oracle DWH",
-          subtitle: "Star schema · 7 dimensions · 3 fact tables",
+          subtitle: "Star schema · 7 dimensions · 1 fact table",
           imagePath: retailTargetSchema,
         },
         {
