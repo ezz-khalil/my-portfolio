@@ -16,7 +16,7 @@ const ProjectsSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-20">
+    <section className="pt-32 pb-20 relative z-10">
       <div className="container mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -28,14 +28,27 @@ const ProjectsSection = () => {
           Featured Projects
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <motion.div 
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.2 }
+            }
+          }}
+        >
           {projects.map((project, i) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20 } }
+              }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
               onClick={() => navigate(`/project/${project.id}`)}
               className="project-card group"
             >
@@ -73,13 +86,13 @@ const ProjectsSection = () => {
                   )}
                 </div>
 
-                <div className="flex items-center gap-1 text-primary text-sm font-mono group-hover:gap-2 transition-all">
+                <div className="flex items-center gap-1 text-primary text-sm font-mono group-hover:gap-2 transition-all mt-auto">
                   View Details <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

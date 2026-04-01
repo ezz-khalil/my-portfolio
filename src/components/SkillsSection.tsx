@@ -19,7 +19,7 @@ const SkillsSection = () => {
   }, []);
 
   return (
-    <section className="py-20 overflow-hidden">
+    <section className="pt-32 pb-20 overflow-hidden relative z-10">
       <div className="container mx-auto px-6 mb-12">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,12 @@ const SkillsSection = () => {
               className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full"
             >
               {chunkedSkills[currentPage].map((skill, i) => (
-                <div key={`${skill.name}-${i}`} className="skill-card w-full group cursor-pointer">
+                <motion.div 
+                  key={`${skill.name}-${i}`} 
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="skill-card w-full group cursor-pointer"
+                >
                   {skill.iconType === "img" ? (
                     <img
                       src={skill.icon}
@@ -58,7 +63,7 @@ const SkillsSection = () => {
                     <span className="text-4xl transition-transform duration-300 group-hover:scale-110">{skill.icon}</span>
                   )}
                   <span className="text-sm font-mono text-foreground text-center line-clamp-1">{skill.name}</span>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </AnimatePresence>
