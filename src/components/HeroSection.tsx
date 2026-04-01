@@ -71,13 +71,13 @@ const HeroSection = () => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-            className="rounded-full border-2 border-primary/40 p-1 w-44 h-44 md:w-56 md:h-56 animate-pulse-glow"
+            className="rounded-full border-2 border-primary/40 p-1 w-56 h-56 md:w-72 md:h-72 animate-pulse-glow"
           >
             <div className="w-full h-full rounded-full bg-secondary overflow-hidden flex items-center justify-center">
               {personalInfo.photo && personalInfo.photo !== "/placeholder-avatar.svg" ? (
                 <img src={personalInfo.photo} alt={personalInfo.name} className="w-full h-full object-cover" />
               ) : (
-                 <span className="font-mono font-bold text-primary text-4xl">
+                 <span className="font-mono font-bold text-primary text-5xl md:text-6xl">
                    {personalInfo.name.split(" ").map((n) => n[0]).join("")}
                  </span>
               )}
@@ -85,12 +85,12 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Name & Title */}
-          <div className="flex flex-col items-center gap-2 text-center">
+          <div className="flex flex-col items-center gap-2 text-center mt-4">
             <motion.h1
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="font-bold tracking-tight text-4xl md:text-6xl"
+              className="font-bold tracking-tight text-5xl md:text-7xl"
             >
               <span className="gradient-text">{personalInfo.name}</span>
             </motion.h1>
@@ -98,7 +98,7 @@ const HeroSection = () => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-primary font-mono tracking-wider text-lg md:text-2xl mt-2"
+              className="text-primary font-mono tracking-wider text-xl md:text-3xl mt-4"
             >
               {"< "}{personalInfo.title}{" />"}
             </motion.p>
